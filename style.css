@@ -73,3 +73,7 @@ select{
     appearance: none;
     border: none;
 }
+
+.table{
+    text-align: center;
+}
