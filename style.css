@@ -1,5 +1,10 @@
 body{
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    flex-direction: column;
 }
 
 #T1,#T2,#T3,#T4,#T5{
@@ -19,6 +24,7 @@ td{
 
 table{
     margin-top: 5%;
+    border-collapse: collapse;
 }
 
 .pick{
