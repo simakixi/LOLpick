@@ -42,7 +42,7 @@ function sleep(ms) {
 }
 
 async function topanime() {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 5; j++) {
             await sleep(200);
             const container = document.getElementById("T1");
@@ -60,7 +60,7 @@ async function topanime() {
 }
 
 async function jganime() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 5; j++) {
             await sleep(200);
             const container = document.getElementById("T2");
@@ -78,7 +78,7 @@ async function jganime() {
 }
 
 async function midanime() {
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 5; j++) {
             await sleep(200);
             const container = document.getElementById("T3");
@@ -96,7 +96,7 @@ async function midanime() {
 }
 
 async function botanime() {
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 5; j++) {
             await sleep(200);
             const container = document.getElementById("T4");
@@ -114,7 +114,7 @@ async function botanime() {
 }
 
 async function supanime() {
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 12; i++) {
         for (let j = 0; j < 5; j++) {
             await sleep(200);
             const container = document.getElementById("T5");
