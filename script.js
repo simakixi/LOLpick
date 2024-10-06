@@ -15,6 +15,45 @@ sup.src = "img/sup.png";
 img = [top1,jg,mid,bot,sup];
 flag = true;
 
+let TOPROLL = [1,3,12,21,23,25,28,34,37,38,39,40,42,44,46,47,51,52,61,63,66,68,77,83,84,88,95,97,98,99,102,108,110,111,117,119,121,122,131,135,138,141,142,144,150,151,157,158,160,167];
+let JGROLL = [6,15,19,26,29,30,31,33,40,41,42,43,48,50,51,58,62,64,65,70,72,79,80,83,91,93,94,104,105,109,114,118,120,124,132,141,147,148,151,152,155,160];
+let MIDROLL = [2,3,4,7,8,11,12,13,17,22,24,26,29,35,36,45,47,52,59,60,69,73,76,78,86,90,96,101,112,129,130,132,133,137,139,145,149,150,154,156,157,161,163,165,168];
+let BOTROLL = [9,10,20,27,32,53,54,55,57,67,74,82,92,113,123,125,137,140,143,153,156,162,163];
+let SUPROLL = [5,10,14,16,17,18,49,56,71,75,76,79,81,85,87,89,90,98,99,100,103,106,107,115,116,126,127,128,131,134,136,146,154,159,164,166];
+
+let TOPCHAR = [];
+let JGCHAR = [];
+let MIDCHAR = [];
+let BOTCHAR = [];
+let SUPCHAR = [];
+
+let Character = [];
+for(let i=1;i<=168;i++){
+    let tmp = document.createElement("img");
+    tmp.src = "img/CHAR/"+i+".png";
+    Character[i] = tmp;
+}
+
+for(let i=0;i<TOPROLL.length;i++){
+    TOPCHAR[i] = Character[TOPROLL[i]]
+}
+
+for(let i=0;i<JGROLL.length;i++){
+    JGCHAR[i] = Character[JGROLL[i]]
+}
+
+for(let i=0;i<MIDROLL.length;i++){
+    MIDCHAR[i] = Character[MIDROLL[i]]
+}
+
+for(let i=0;i<BOTROLL.length;i++){
+    BOTCHAR[i] = Character[BOTROLL[i]]
+}
+
+for(let i=0;i<SUPROLL.length;i++){
+    SUPCHAR[i] = Character[SUPROLL[i]]
+}
+
 async function random(){
     if(flag){
     flag=false;
@@ -131,4 +170,143 @@ async function supanime() {
     document.getElementById("T5").querySelector('img').src = img[roll[4]].src;
     await sleep(500);
     flag=true;
+}
+
+let flag2=true;
+//ランダムチャンピオン
+function randomchampion(){
+    if(flag2){
+        flag2=false;
+        let select = document.getElementById("champion");
+        let value = select.value;
+        if(value=="0"){
+            all("championcell");
+        }else if(value=="1"){
+            toprandom("championcell");
+        }else if(value=="2"){
+            jgrandom("championcell");
+        }else if(value=="3"){
+            midrandom("championcell");
+        }else if(value=="4"){
+            botrandom("championcell");
+        }else if(value=="5"){
+            suprandom("championcell");
+        }else{
+            flag2=true;
+        }
+    }
+}
+
+async function all(cell){
+    for (let i = 0; i < 25; i++) {
+        await sleep(200);
+        let randomN = Math.floor(Math.random() * 168) + 1;
+        const container = document.getElementById(cell);
+        const Element = container.querySelector('img');
+        if (Element) {
+            Element.src = Character[randomN].src;
+        } else {
+            const newElement = document.createElement('img');
+            newElement.src = Character[randomN].src;
+            container.appendChild(newElement);
+        }
+    }
+    let randomN = Math.floor(Math.random() * 168) + 1;
+    document.getElementById(cell).querySelector('img').src = Character[randomN].src;
+    flag2=true;
+}
+
+async function toprandom(cell){
+    for (let i = 0; i < 25; i++) {
+        await sleep(200);
+        let randomN = Math.floor(Math.random() * TOPCHAR.length);
+        const container = document.getElementById(cell);
+        const Element = container.querySelector('img');
+        if (Element) {
+            Element.src = TOPCHAR[randomN].src;
+        } else {
+            const newElement = document.createElement('img');
+            newElement.src = TOPCHAR[randomN].src;
+            container.appendChild(newElement);
+        }
+    }
+    let randomN = Math.floor(Math.random() * TOPCHAR.length);
+    document.getElementById(cell).querySelector('img').src = TOPCHAR[randomN].src;
+    flag2=true;
+}
+
+async function jgrandom(cell){
+    for (let i = 0; i < 25; i++) {
+        await sleep(200);
+        let randomN = Math.floor(Math.random() * JGCHAR.length);
+        const container = document.getElementById(cell);
+        const Element = container.querySelector('img');
+        if (Element) {
+            Element.src = JGCHAR[randomN].src;
+        } else {
+            const newElement = document.createElement('img');
+            newElement.src = JGCHAR[randomN].src;
+            container.appendChild(newElement);
+        }
+    }
+    let randomN = Math.floor(Math.random() * JGCHAR.length);
+    document.getElementById(cell).querySelector('img').src = JGCHAR[randomN].src;
+    flag2=true;
+}
+
+async function midrandom(cell){
+    for (let i = 0; i < 25; i++) {
+        await sleep(200);
+        let randomN = Math.floor(Math.random() * MIDCHAR.length);
+        const container = document.getElementById(cell);
+        const Element = container.querySelector('img');
+        if (Element) {
+            Element.src = MIDCHAR[randomN].src;
+        } else {
+            const newElement = document.createElement('img');
+            newElement.src = MIDCHAR[randomN].src;
+            container.appendChild(newElement);
+        }
+    }
+    let randomN = Math.floor(Math.random() * MIDCHAR.length);
+    document.getElementById(cell).querySelector('img').src = MIDCHAR[randomN].src;
+    flag2=true;
+}
+
+async function botrandom(cell){
+    for (let i = 0; i < 25; i++) {
+        await sleep(200);
+        let randomN = Math.floor(Math.random() * BOTCHAR.length);
+        const container = document.getElementById(cell);
+        const Element = container.querySelector('img');
+        if (Element) {
+            Element.src = BOTCHAR[randomN].src;
+        } else {
+            const newElement = document.createElement('img');
+            newElement.src = BOTCHAR[randomN].src;
+            container.appendChild(newElement);
+        }
+    }
+    let randomN = Math.floor(Math.random() * BOTCHAR.length);
+    document.getElementById(cell).querySelector('img').src = BOTCHAR[randomN].src;
+    flag2=true;
+}
+
+async function suprandom(cell){
+    for (let i = 0; i < 25; i++) {
+        await sleep(200);
+        let randomN = Math.floor(Math.random() * SUPCHAR.length);
+        const container = document.getElementById(cell);
+        const Element = container.querySelector('img');
+        if (Element) {
+            Element.src = SUPCHAR[randomN].src;
+        } else {
+            const newElement = document.createElement('img');
+            newElement.src = SUPCHAR[randomN].src;
+            container.appendChild(newElement);
+        }
+    }
+    let randomN = Math.floor(Math.random() * SUPCHAR.length);
+    document.getElementById(cell).querySelector('img').src = SUPCHAR[randomN].src;
+    flag2=true;
 }

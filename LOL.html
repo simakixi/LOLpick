@@ -98,6 +98,29 @@
         <div style="text-align: center;">
             <a class="pick btn" onclick="random()">ランダムピック</a>
         </div>
+        <hr style="border: none; height: 2px;width: 100vw;border-top:2px dashed white; margin-top: 2%;">
+        <h1 style="margin-bottom: 2%;">【RANDOM CHAMPION】</h1>
+        <div>
+            <table>
+                <tr>
+                    <td class="name">
+                        <select id="champion">
+                            <option disabled selected>----</option>
+                            <option value="0">全て</option>
+                            <option value="1">top</option>
+                            <option value="2">jg</option>
+                            <option value="3">mid</option>
+                            <option value="4">bot</option>
+                            <option value="5">sup</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="championcell"></td>
+                </tr>
+            </table>
+        </div>
+        <a class="pick btn last" onclick="randomchampion()" style="margin-top: 2%;">ランダムピック</a>
     </body>
     <script src="script.js"></script>
 </html>

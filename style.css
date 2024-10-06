@@ -32,7 +32,7 @@ table{
 }
 
 .btn{
-    margin-top: 3%;
+    margin-top: 5%;
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 1.5;
@@ -89,4 +89,19 @@ h1{
     font-weight: bold;
     color:white;
     margin-bottom: -3%;
+}
+
+#champion{
+    text-align: center;
+    font-family: 'Arial Rounded', 'Comfortaa', 'Baloo', sans-serif;
+}
+
+#championcell{
+    width: 200px;
+    height: 200px;
+    padding:10px;
+}
+
+.last{
+    margin-bottom: 5%;
 }
