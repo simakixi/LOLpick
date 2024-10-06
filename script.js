@@ -54,6 +54,15 @@ for(let i=0;i<SUPROLL.length;i++){
     SUPCHAR[i] = Character[SUPROLL[i]]
 }
 
+let functionlist = [
+    toprandom,
+    jgrandom,
+    midrandom,
+    botrandom,
+    suprandom
+];
+
+
 async function random(){
     if(flag){
     flag=false;
@@ -198,9 +207,14 @@ function randomchampion(){
 }
 
 async function all(cell){
+    let randomM = -1;
+    let randomN = -1;
     for (let i = 0; i < 25; i++) {
         await sleep(200);
-        let randomN = Math.floor(Math.random() * 168) + 1;
+        do {
+            randomN = Math.floor(Math.random() * 168) + 1;
+        } while (randomN === randomM);
+        randomM = randomN;
         const container = document.getElementById(cell);
         const Element = container.querySelector('img');
         if (Element) {
@@ -211,15 +225,20 @@ async function all(cell){
             container.appendChild(newElement);
         }
     }
-    let randomN = Math.floor(Math.random() * 168) + 1;
+    randomN = Math.floor(Math.random() * 168) + 1;
     document.getElementById(cell).querySelector('img').src = Character[randomN].src;
     flag2=true;
 }
 
 async function toprandom(cell){
+    let randomM = -1;
+    let randomN = -1;
     for (let i = 0; i < 25; i++) {
         await sleep(200);
-        let randomN = Math.floor(Math.random() * TOPCHAR.length);
+        do {
+            randomN = Math.floor(Math.random() * TOPCHAR.length);
+        } while (randomN === randomM);
+        randomM = randomN;
         const container = document.getElementById(cell);
         const Element = container.querySelector('img');
         if (Element) {
@@ -230,15 +249,21 @@ async function toprandom(cell){
             container.appendChild(newElement);
         }
     }
-    let randomN = Math.floor(Math.random() * TOPCHAR.length);
+    randomN = Math.floor(Math.random() * TOPCHAR.length);
     document.getElementById(cell).querySelector('img').src = TOPCHAR[randomN].src;
     flag2=true;
+    flag=true;
 }
 
 async function jgrandom(cell){
+    let randomM = -1;
+    let randomN = -1;
     for (let i = 0; i < 25; i++) {
         await sleep(200);
-        let randomN = Math.floor(Math.random() * JGCHAR.length);
+        do {
+            randomN = Math.floor(Math.random() * JGCHAR.length);
+        } while (randomN === randomM);
+        randomM = randomN;
         const container = document.getElementById(cell);
         const Element = container.querySelector('img');
         if (Element) {
@@ -249,15 +274,21 @@ async function jgrandom(cell){
             container.appendChild(newElement);
         }
     }
-    let randomN = Math.floor(Math.random() * JGCHAR.length);
+    randomN = Math.floor(Math.random() * JGCHAR.length);
     document.getElementById(cell).querySelector('img').src = JGCHAR[randomN].src;
     flag2=true;
+    flag=true;
 }
 
 async function midrandom(cell){
+    let randomM = -1;
+    let randomN = -1;
     for (let i = 0; i < 25; i++) {
         await sleep(200);
-        let randomN = Math.floor(Math.random() * MIDCHAR.length);
+        do {
+            randomN = Math.floor(Math.random() * MIDCHAR.length);
+        } while (randomN === randomM);
+        randomM = randomN;
         const container = document.getElementById(cell);
         const Element = container.querySelector('img');
         if (Element) {
@@ -268,15 +299,21 @@ async function midrandom(cell){
             container.appendChild(newElement);
         }
     }
-    let randomN = Math.floor(Math.random() * MIDCHAR.length);
+    randomN = Math.floor(Math.random() * MIDCHAR.length);
     document.getElementById(cell).querySelector('img').src = MIDCHAR[randomN].src;
     flag2=true;
+    flag=true;
 }
 
 async function botrandom(cell){
+    let randomM = -1;
+    let randomN = -1;
     for (let i = 0; i < 25; i++) {
         await sleep(200);
-        let randomN = Math.floor(Math.random() * BOTCHAR.length);
+        do {
+            randomN = Math.floor(Math.random() * BOTCHAR.length);
+        } while (randomN === randomM);
+        randomM = randomN;
         const container = document.getElementById(cell);
         const Element = container.querySelector('img');
         if (Element) {
@@ -287,15 +324,21 @@ async function botrandom(cell){
             container.appendChild(newElement);
         }
     }
-    let randomN = Math.floor(Math.random() * BOTCHAR.length);
+    randomN = Math.floor(Math.random() * BOTCHAR.length);
     document.getElementById(cell).querySelector('img').src = BOTCHAR[randomN].src;
     flag2=true;
+    flag=true;
 }
 
 async function suprandom(cell){
+    let randomM = -1;
+    let randomN = -1;
     for (let i = 0; i < 25; i++) {
         await sleep(200);
-        let randomN = Math.floor(Math.random() * SUPCHAR.length);
+        do {
+            randomN = Math.floor(Math.random() * SUPCHAR.length);
+        } while (randomN === randomM);
+        randomM = randomN;
         const container = document.getElementById(cell);
         const Element = container.querySelector('img');
         if (Element) {
@@ -306,7 +349,20 @@ async function suprandom(cell){
             container.appendChild(newElement);
         }
     }
-    let randomN = Math.floor(Math.random() * SUPCHAR.length);
+    randomN = Math.floor(Math.random() * SUPCHAR.length);
     document.getElementById(cell).querySelector('img').src = SUPCHAR[randomN].src;
     flag2=true;
+    flag=true;
+}
+
+//ランダムパーティ処理
+function randomparty(){
+    if(flag){
+        flag=false;
+        functionlist[roll[0]]("P1");
+        functionlist[roll[1]]("P2");
+        functionlist[roll[2]]("P3");
+        functionlist[roll[3]]("P4");
+        functionlist[roll[4]]("P5");
+    }
 }
