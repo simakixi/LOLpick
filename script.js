@@ -54,6 +54,12 @@ for(let i=0;i<SUPROLL.length;i++){
     SUPCHAR[i] = Character[SUPROLL[i]]
 }
 
+const OPGGlink = [
+    "https://www.colordic.org/",
+    "https://example.com/newlink2",
+    "https://example.com/newlink3"
+];
+
 let functionlist = [
     toprandom,
     jgrandom,
@@ -227,6 +233,7 @@ async function all(cell){
     }
     randomN = Math.floor(Math.random() * 168) + 1;
     document.getElementById(cell).querySelector('img').src = Character[randomN].src;
+    selectnumber = randomN;
     flag2=true;
 }
 
@@ -251,6 +258,7 @@ async function toprandom(cell){
     }
     randomN = Math.floor(Math.random() * TOPCHAR.length);
     document.getElementById(cell).querySelector('img').src = TOPCHAR[randomN].src;
+    selectnumber = randomN;
     flag2=true;
     flag=true;
 }
@@ -276,6 +284,7 @@ async function jgrandom(cell){
     }
     randomN = Math.floor(Math.random() * JGCHAR.length);
     document.getElementById(cell).querySelector('img').src = JGCHAR[randomN].src;
+    selectnumber = randomN;
     flag2=true;
     flag=true;
 }
@@ -301,6 +310,7 @@ async function midrandom(cell){
     }
     randomN = Math.floor(Math.random() * MIDCHAR.length);
     document.getElementById(cell).querySelector('img').src = MIDCHAR[randomN].src;
+    selectnumber = randomN;
     flag2=true;
     flag=true;
 }
@@ -326,6 +336,7 @@ async function botrandom(cell){
     }
     randomN = Math.floor(Math.random() * BOTCHAR.length);
     document.getElementById(cell).querySelector('img').src = BOTCHAR[randomN].src;
+    selectnumber = randomN;
     flag2=true;
     flag=true;
 }
@@ -351,6 +362,7 @@ async function suprandom(cell){
     }
     randomN = Math.floor(Math.random() * SUPCHAR.length);
     document.getElementById(cell).querySelector('img').src = SUPCHAR[randomN].src;
+    selectnumber = randomN;
     flag2=true;
     flag=true;
 }
@@ -365,4 +377,26 @@ function randomparty(){
         functionlist[roll[3]]("P4");
         functionlist[roll[4]]("P5");
     }
+}
+
+let selectnumber = -1;
+function setlink(){
+    let linknumber;
+    let select = document.getElementById("champion");
+    let value = select.value;
+    if(value=="0"){
+        CHaracter[selectnumber];
+    }else if(value=="1"){
+        TOPROLL[selectnumber]
+    }else if(value=="2"){
+        JGROLL[selectnumber];
+    }else if(value=="3"){
+        MIDROLL[selectnumber];
+    }else if(value=="4"){
+        BOTROLL[selectnumber];
+    }else if(value=="5"){
+        SUPROLL[selectnumber];
+    }
+    let linkcell = document.getElementById("OPGG");
+    linkcell.href = OPGGlink[linknumber];
 }
