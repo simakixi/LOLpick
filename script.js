@@ -889,6 +889,11 @@ function Cancellation(event){
 let changeorder = false;
 function change(event){
     event.preventDefault();
+    let checkboxes = document.querySelectorAll('.checkfor');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+    });
+    checkfor=false;
     let clear = document.getElementById('mybox');
     clear.innerHTML = '';
     if(!changeorder){
@@ -989,7 +994,7 @@ function change(event){
 
 function handleClick(event) {
     let Imageid = event.target.id;
-    Imageid = Imageid.slice(-1);
+    Imageid = Imageid.replace("image", "");
     window.open(OPGGlink[Imageid]);
     window.open(UGGlink[Imageid]);
 }
