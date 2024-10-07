@@ -996,7 +996,6 @@ function handleClick(event) {
     let Imageid = event.target.id;
     Imageid = Imageid.replace("image", "");
     window.open(OPGGlink[Imageid]);
-    window.open(UGGlink[Imageid]);
 }
 
 setdictionary();
@@ -1009,6 +1008,12 @@ function setdictionary(){
         img.src = "img/CHAR/"+i+".png";
         img.style.cursor = 'pointer';
         img.onclick = handleClick;
+        img.oncontextmenu = function(event) {
+            event.preventDefault();
+            let Imageid = event.target.id;
+            Imageid = Imageid.replace("image", "");
+            window.open(UGGlink[Imageid]);
+        };
         let text = document.createElement('h3');
         text.textContent = CNAME[i];
         div.appendChild(img);
