@@ -29,6 +29,7 @@ let SUPCHAR = [];
 
 let Character = [];
 let CNUMBER = [];
+
 for(let i=1;i<=168;i++){
     let tmp = document.createElement("img");
     tmp.src = "img/CHAR/"+i+".png";
@@ -56,7 +57,7 @@ for(let i=0;i<SUPROLL.length;i++){
 }
 
 const CNAME = [
-    "アイバーン", "アカリ", "アクシャン", "アジール", "アッシュ", "アニビア", 
+    "","アイバーン", "アカリ", "アクシャン", "アジール", "アッシュ", "アニビア", 
     "アニー", "アフェリオス", "アムム", "アリスター", "アーゴット", "アーリ", 
     "イブリン", "イラオイ", "イレリア", "ウディア", "ウーコン", "エイトロックス", 
     "エコー", "エズリアル", "エリス", "オラフ", "オリアナ", "オレリオン・ソル", 
@@ -437,6 +438,29 @@ let functionlist = [
     suprandom
 ];
 
+setmy();
+function setmy(){
+    const mybox = document.getElementById("mybox");
+
+for (let i = 1; i < CNAME.length; i++) {
+    let label = document.createElement("label");
+    label.className = "check";
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = i;
+    checkbox.className = "checkfor";
+
+    let span = document.createElement("span");
+    span.textContent = CNAME[i];
+
+    label.appendChild(checkbox);
+    label.appendChild(span);
+
+    mybox.appendChild(label);
+}
+}
+
 
 async function random(){
     if(flag){
@@ -789,4 +813,66 @@ function setlink(){
     linkcell.href = OPGGlink[linknumber];
     let linkcell2 = document.getElementById("UGG");
     linkcell2.href = UGGlink[linknumber];
+}
+
+let flag3=true;
+async function mypick(){
+    let check = [];
+    
+    let checkbox = document.querySelectorAll(".check input[type='checkbox']");
+    checkbox.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            check.push(checkbox.value);
+        }
+    });
+    if(flag3){
+        if(1<check.length){
+            flag3=false;
+            let randomM = -1;
+            let randomN = -1;
+            for (let i = 0; i < 25; i++) {
+                await sleep(200);
+                do {
+                    randomN = Math.floor(Math.random() * check.length);
+                } while (randomN === randomM);
+                randomM = randomN;
+                randomN = check[randomN];
+                const container = document.getElementById("mypick");
+                const Element = container.querySelector('img');
+                if (Element) {
+                    Element.src = Character[randomN].src;
+                } else {
+                    const newElement = document.createElement('img');
+                    newElement.src = Character[randomN].src;
+                    container.appendChild(newElement);
+                }
+            }
+            randomN = Math.floor(Math.random() * check.length);
+            randomN = check[randomN];
+            document.getElementById("mypick").querySelector('img').src = Character[randomN].src;
+            let linkcell = document.getElementById("myOPGG");
+            linkcell.href = OPGGlink[randomN];
+            let linkcell2 = document.getElementById("myUGG");
+            linkcell2.href = UGGlink[randomN];
+            flag3=true;
+        }
+    }
+}
+
+let checkfor = false;
+function allcheck(event){
+    event.preventDefault();
+    if(!checkfor){
+        let checkboxes = document.querySelectorAll('.checkfor');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = true;
+        });
+        checkfor=true;
+    }else{
+        let checkboxes = document.querySelectorAll('.checkfor');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        checkfor=false;
+    }
 }
