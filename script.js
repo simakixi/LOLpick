@@ -876,3 +876,12 @@ function allcheck(event){
         checkfor=false;
     }
 }
+
+function Cancellation(event){
+    event.preventDefault();
+    let checkboxes = document.querySelectorAll('.checkfor');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = false;
+    });
+    checkfor=false;
+}

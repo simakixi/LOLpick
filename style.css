@@ -187,7 +187,7 @@ span {
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
-    margin:8px;
+    margin:5px;
 }
 
 .check input {
@@ -240,4 +240,9 @@ span:hover {
 .allcheck:hover{
     background-color: red;
     color:black;
+}
+
+#checkbutton {
+    display: flex;
+    gap:20px;
 }
