@@ -251,3 +251,17 @@ span:hover {
     margin-top: 1%;
     margin-bottom: 1%;
 }
+
+.CP{
+    color: white;
+    font-weight: bold;
+}
+
+#dictionary{
+    display:flex;
+    flex-wrap: wrap;
+    gap:30px;
+    text-align: center;
+    justify-content: center;
+    font-size: 12px;
+}

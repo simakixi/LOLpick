@@ -986,3 +986,28 @@ function change(event){
         document.getElementById("order").textContent = "あいうえお順";
     }
 }
+
+function handleClick(event) {
+    let Imageid = event.target.id;
+    Imageid = Imageid.slice(-1);
+    window.open(OPGGlink[Imageid]);
+    window.open(UGGlink[Imageid]);
+}
+
+setdictionary();
+function setdictionary(){
+    for(let i=1;i<CNAME.length;i++){
+        let div = document.createElement('div');
+        div.className = 'CP';
+        let img = document.createElement('img');
+        img.id = 'image'+i;
+        img.src = "img/CHAR/"+i+".png";
+        img.style.cursor = 'pointer';
+        img.onclick = handleClick;
+        let text = document.createElement('h3');
+        text.textContent = CNAME[i];
+        div.appendChild(img);
+        div.appendChild(text);
+        document.getElementById('dictionary').appendChild(div);
+    }
+}
