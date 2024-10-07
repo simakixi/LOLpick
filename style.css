@@ -246,3 +246,8 @@ span:hover {
     display: flex;
     gap:20px;
 }
+
+.order{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

@@ -442,23 +442,23 @@ setmy();
 function setmy(){
     const mybox = document.getElementById("mybox");
 
-for (let i = 1; i < CNAME.length; i++) {
-    let label = document.createElement("label");
-    label.className = "check";
+    for (let i = 1; i < CNAME.length; i++) {
+        let label = document.createElement("label");
+        label.className = "check";
 
-    let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.value = i;
-    checkbox.className = "checkfor";
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = i;
+        checkbox.className = "checkfor";
 
-    let span = document.createElement("span");
-    span.textContent = CNAME[i];
+        let span = document.createElement("span");
+        span.textContent = CNAME[i];
 
-    label.appendChild(checkbox);
-    label.appendChild(span);
+        label.appendChild(checkbox);
+        label.appendChild(span);
 
-    mybox.appendChild(label);
-}
+        mybox.appendChild(label);
+    }
 }
 
 
@@ -884,4 +884,105 @@ function Cancellation(event){
             checkbox.checked = false;
     });
     checkfor=false;
+}
+
+let changeorder = false;
+function change(event){
+    event.preventDefault();
+    let clear = document.getElementById('mybox');
+    clear.innerHTML = '';
+    if(!changeorder){
+        changeorder=true;
+        const mybox = document.getElementById("mybox");
+        let h2 = document.createElement('h2');
+        h2.textContent = "TOP";
+        h2.className = "order";
+        mybox.appendChild(h2);
+        for (let i = 1; i < TOPROLL.length; i++) {
+            let label = document.createElement("label");
+            label.className = "check";
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = TOPROLL[i];
+            checkbox.className = "checkfor";
+            let span = document.createElement("span");
+            span.textContent = CNAME[TOPROLL[i]];
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            mybox.appendChild(label);
+        }
+        h2 = document.createElement('h2');
+        h2.textContent = "JUNGLE";
+        h2.className = "order";
+        mybox.appendChild(h2);
+        for (let i = 1; i < JGROLL.length; i++) {
+            let label = document.createElement("label");
+            label.className = "check";
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = JGROLL[i];
+            checkbox.className = "checkfor";
+            let span = document.createElement("span");
+            span.textContent = CNAME[JGROLL[i]];
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            mybox.appendChild(label);
+        }
+        h2 = document.createElement('h2');
+        h2.textContent = "MID";
+        h2.className = "order";
+        mybox.appendChild(h2);
+        for (let i = 1; i < MIDROLL.length; i++) {
+            let label = document.createElement("label");
+            label.className = "check";
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = MIDROLL[i];
+            checkbox.className = "checkfor";
+            let span = document.createElement("span");
+            span.textContent = CNAME[MIDROLL[i]];
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            mybox.appendChild(label);
+        }
+        h2 = document.createElement('h2');
+        h2.textContent = "BOT";
+        h2.className = "order";
+        mybox.appendChild(h2);
+        for (let i = 1; i < BOTROLL.length; i++) {
+            let label = document.createElement("label");
+            label.className = "check";
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = BOTROLL[i];
+            checkbox.className = "checkfor";
+            let span = document.createElement("span");
+            span.textContent = CNAME[BOTROLL[i]];
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            mybox.appendChild(label);
+        }
+        h2 = document.createElement('h2');
+        h2.textContent = "SUPPORT";
+        h2.className = "order";
+        mybox.appendChild(h2);
+        for (let i = 1; i < SUPROLL.length; i++) {
+            let label = document.createElement("label");
+            label.className = "check";
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = SUPROLL[i];
+            checkbox.className = "checkfor";
+            let span = document.createElement("span");
+            span.textContent = CNAME[SUPROLL[i]];
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            mybox.appendChild(label);
+        }
+        document.getElementById("order").textContent = "レーンごと";
+    }else{
+        changeorder=false;
+        setmy();
+        document.getElementById("order").textContent = "あいうえお順";
+    }
 }
