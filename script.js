@@ -1000,6 +1000,7 @@ function handleClick(event) {
 
 setdictionary();
 function setdictionary(){
+    document.getElementById('dictionary').innerHTML = "";
     for(let i=1;i<CNAME.length;i++){
         let div = document.createElement('div');
         div.className = 'CP';
@@ -1019,5 +1020,49 @@ function setdictionary(){
         div.appendChild(img);
         div.appendChild(text);
         document.getElementById('dictionary').appendChild(div);
+    }
+}
+
+function toKatakana(str) {
+    return str.replace(/[\u3041-\u3096]/g, function(match) {
+      return String.fromCharCode(match.charCodeAt(0) + 0x60);
+    });
+  }
+
+//inputにイベントを追加
+document.getElementById('search').addEventListener('input', Input);
+function Input(event) {
+    searchname = document.getElementById("search").value;
+    searchname = toKatakana(searchname);
+    let list = [];
+    if(searchname!=""){
+        for(let i=1;i<CNAME.length;i++){
+            if(CNAME[i].substring(0,searchname.length) == searchname){
+                list.push(i);
+            }
+        }
+        document.getElementById('dictionary').innerHTML = "";
+        for(let i=0;i<list.length;i++){
+            let div = document.createElement('div');
+            div.className = 'CP';
+            let img = document.createElement('img');
+            img.id = 'image'+list[i];
+            img.src = "img/CHAR/"+list[i]+".png";
+            img.style.cursor = 'pointer';
+            img.onclick = handleClick;
+            img.oncontextmenu = function(event) {
+                event.preventDefault();
+                let Imageid = event.target.id;
+                Imageid = Imageid.replace("image", "");
+                window.open(UGGlink[Imageid]);
+            };
+            let text = document.createElement('h3');
+            text.textContent = CNAME[list[i]];
+            div.appendChild(img);
+            div.appendChild(text);
+            document.getElementById('dictionary').appendChild(div);
+        }
+    }else{
+        setdictionary();
     }
 }
